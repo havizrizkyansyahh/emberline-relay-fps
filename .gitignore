@@ -1,0 +1,12 @@
+out/
+node_modules/
+*.log
+.env
+.env.*
+*.db
+*.sqlite
+*.sqlite3
+wallet*.json
+transcripts*.tar.gz
+credentials
+.DS_Store

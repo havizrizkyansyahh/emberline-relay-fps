@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#102a32"><title>EMBERLINE // RELAY</title><link rel="icon" href="./icon.svg" type="image/svg+xml"><link rel="stylesheet" href="./style.css">
+<script type="importmap">{"imports":{"three":"./vendor/three/three.module.min.js"}}</script></head>
+<body>
+<canvas id="world" aria-label="First-person view of Emberline relay station"></canvas>
+<div id="vignette"></div><div id="damage"></div>
+<div id="hud" hidden>
+ <div class="brand"><span class="brand-mark">E<span>∕</span>R</span><div>EMBERLINE <span>//</span> RELAY<small>COASTAL SIGNAL STATION · 06</small></div></div>
+ <div class="matchbar"><div class="team attack"><span>ATTACK</span><b id="scoreA">0</b></div><div class="clock"><small id="phase">ROUND 01</small><strong id="timer">01:30</strong><span id="alive">3 V 3</span></div><div class="team defend"><b id="scoreD">0</b><span>DEFENSE</span></div></div>
+ <div id="feed"></div>
+ <div class="radar-wrap"><div class="eyebrow"><span class="dot"></span>TACTICAL LINK <span id="location">SOUTH DOCK</span></div><canvas id="radar" width="220" height="260"></canvas><div class="radar-foot">N ^ <span id="radarRoster">3 / 3 LINKED</span></div></div>
+ <div id="objective" class="objective"><span class="objective-icon">◇</span><div><small>YOUR OBJECTIVE</small><b id="objectiveText">Deliver the relay to A or B</b><span id="objectiveSub">Hold E at a site to arm the uplink</span></div></div>
+ <div id="markers"><div id="markerA" class="site-marker">A <small></small></div><div id="markerB" class="site-marker">B <small></small></div></div>
+ <div id="reticle"><i></i><i></i><i></i><i></i><span></span></div><div id="hitmarker">×</div><div id="hitlabel"></div>
+ <div id="interaction" hidden><span id="interactionLabel">ARMING RELAY</span><div><i id="interactionFill"></i></div></div>
+ <div id="prompt"></div><div id="notice"></div>
+ <div class="bottom"><div class="vitals panel"><span class="plus">+</span><div><b id="health">100</b><small>HEALTH</small></div><div class="health-track"><i id="healthFill"></i></div><span class="shield">⬡</span><div><b id="armor">0</b><small>ARMOR</small></div></div>
+ <div class="utility panel"><span id="money">$ 2,400</span><small><kbd>B</kbd> EQUIPMENT <span id="frag">G · FRAG ×1</span></small></div>
+ <div class="ammo panel"><div><small id="weaponName">KITE / 12</small><b><span id="ammo">12</span><em>/</em><span id="reserve">36</span></b></div><div id="weaponGlyph">▰━</div></div></div>
+ <div class="keyline"><span><kbd>1</kbd> SIDEARM <kbd>2</kbd> RIFLE <kbd>3</kbd> HEAVY</span><span id="accuracy">STAND STILL TO FOCUS</span><span><kbd>R</kbd> RELOAD <kbd>G</kbd> FRAG <kbd>ESC</kbd> MENU</span></div>
+ <button id="sound" class="sound" title="Toggle synthesized audio (M)">M · SOUND ON</button>
+ <div id="spectator" hidden><small>YOU ARE DOWN · TEAM LINK ACTIVE</small><b id="spectatorName">SPECTATING MICA</b><span>Click / Q to cycle allies · Round continues</span></div>
+</div>
+<section id="start" class="overlay start">
+ <div class="start-left"><div class="eyebrow"><span class="dot"></span>ORIGINAL TACTICAL FPS <span>01 / COASTAL</span></div><h1>EMBERLINE<span>// RELAY</span></h1><p class="lede">One signal.<br>Three ways through.</p><p class="description">Dusk at a coastal relay station. Your three-person cell has one job: arm the uplink before the defense shuts you down.</p><div class="mission-stats"><div><b>3 <i>v</i> 3</b><small>YOU + TWO ALLIES</small></div><div><b>90<span>s</span></b><small>PER ROUND</small></div><div><b>FIRST TO 3</b><small>TAKES THE STATION</small></div></div>
+ <div class="start-actions"><button id="deploy" class="primary">DEPLOY TO STATION <span>></span></button><select id="difficulty" aria-label="Difficulty"><option value="standard">STANDARD</option><option value="casual">CASUAL</option></select></div><p class="fine">Offline. Original geometry. Synthesized sound. No downloads.</p></div>
+ <div class="brief panel"><div class="brief-head"><span class="eyebrow">OPERATION BRIEF</span><b>06:42 PM</b></div><canvas id="briefmap" width="350" height="300"></canvas><div class="brief-objective"><span>◇</span><p>Take <b>A · Tidal Array</b> or <b>B · Uplink Yard</b>.<br>Hold <kbd>E</kbd> for 3.2s. Protect the relay for 35s.</p></div><div class="controls"><div><kbd>W A S D</kbd><span>Move</span></div><div><kbd>MOUSE</kbd><span>Look / left click fire</span></div><div><kbd>SHIFT / CTRL</kbd><span>Walk / crouch</span></div><div><kbd>SPACE / R</kbd><span>Jump / reload</span></div><div><kbd>1 2 3 / G</kbd><span>Weapons / frag</span></div><div><kbd>B / TAB</kbd><span>Buy / scoreboard</span></div></div><p class="fine">Stop to shoot accurately. Cover stops bullets and blasts.<br>No pointer lock? Drag to look, or use the arrow keys. <kbd>M</kbd> mutes audio.</p></div>
+</section>
+<section id="buy" class="overlay buy" hidden><div class="shop panel"><div class="shop-head"><div><div class="eyebrow">FIELD SUPPLY / ROUND <span id="buyRound">01</span></div><h2>Choose your edge.</h2></div><div class="balance"><small>AVAILABLE FUNDS</small><b id="balance">$2,400</b></div><button id="closeBuy" class="close" aria-label="Close buy menu">×</button></div><div id="shopItems" class="shop-items"></div><div class="shop-foot"><p>Sidearm + one frag issued every round.<br><span>Equipment resets. Your money carries forward.</span></p><button id="ready" class="primary">READY / CLOSE <span>></span></button></div><div id="buyFeedback" aria-live="polite"></div></div></section>
+<section id="pause" class="overlay" hidden><div class="pause panel"><div class="eyebrow">SIGNAL ON HOLD</div><h2>Take a breath.</h2><p>The match is paused. Resume to regain mouse control.</p><button id="resume" class="primary">RESUME OPERATION <span>></span></button><button id="restartPause" class="secondary">RESTART MATCH</button><p class="fine">Drag to look if pointer lock is unavailable.<br>Arrow keys also turn the camera.</p></div></section>
+<section id="result" class="overlay" hidden><div class="result panel"><div class="eyebrow" id="resultEyebrow">ROUND COMPLETE</div><h2 id="resultTitle">Signal secured.</h2><p id="resultReason"></p><div class="result-score"><span id="resultA">1</span><i>:</i><span id="resultD">0</span></div><p id="rewardLine"></p><button id="continue" class="primary">NEXT ROUND <span>></span></button><button id="restartResult" class="secondary">RESTART MATCH</button></div></section>
+<section id="scoreboard" class="overlay scoreboard" hidden><div class="panel"><div class="eyebrow">STATION PERSONNEL / HOLD TAB</div><h2>Team link.</h2><div id="scoreRows"></div><p class="fine">ATTACK · TEAL / DEFENSE · AMBER · FIRST TO THREE</p></div></section>
+<div id="fatal" hidden></div><script type="module" src="./app.js"></script>
+</body></html>

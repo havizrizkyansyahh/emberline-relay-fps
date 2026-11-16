@@ -1,0 +1,116 @@
+{
+  "node": "v26.12.1",
+  "sourceBytes": 82865,
+  "sourceFiles": 10,
+  "gameEntries": 16,
+  "gameBytes": 2217880,
+  "checkedReferences": 21,
+  "vendorChecks": [
+    {
+      "path": "game/vendor/three/three.module.min.js",
+      "bytes": 658908,
+      "sha256": "ef510bae547ab3789d6ed543333a8bf42510a8c70743b766c4e19039b976c26b"
+    },
+    {
+      "path": "game/vendor/three/three.core.min.js",
+      "bytes": 1474799,
+      "sha256": "613e370f76638fdef83926642bf256dc9615684922de1ce1f63a8583e5d78578"
+    },
+    {
+      "path": "vendor/makefun-threejs.ts",
+      "bytes": 55627,
+      "sha256": "f9622210e6a0aed70d6f13273a24c9c4a661b5e272edf8fef21197fac6de7969"
+    }
+  ],
+  "images": [
+    {
+      "name": "01-live.jpg",
+      "bytes": 127179,
+      "width": 1280,
+      "height": 720,
+      "sha256": "b243284be13c58dd3687129859478de5359cf8f4ba3a1f6977a049fcb0ca9758"
+    },
+    {
+      "name": "02-relay.jpg",
+      "bytes": 102458,
+      "width": 1280,
+      "height": 720,
+      "sha256": "b47daa6212694a47be5b9fabcd347280727d6e17ec16ea42fa6cc4e3cbf7cd47"
+    },
+    {
+      "name": "03-supply.jpg",
+      "bytes": 68573,
+      "width": 1280,
+      "height": 720,
+      "sha256": "d128dea6b97b950c9fff78edd59c8af0e974678ca673bb3aad329ced355dd59a"
+    },
+    {
+      "name": "04-briefing.jpg",
+      "bytes": 81149,
+      "width": 1280,
+      "height": 720,
+      "sha256": "f6ff4b6503e1e9ce67c3ca12992d91c47ba073d1e278c64f0b8ac928d03ff347"
+    }
+  ],
+  "builds": [
+    "/home/agent/.hermes/cache/scratch/emberline-clean-build-N6xmx4/run-a",
+    "/home/agent/.hermes/cache/scratch/emberline-clean-build-N6xmx4/run-b"
+  ],
+  "identicalFiles": 19,
+  "manifest": {
+    "dossier.json": "8d69af39142642195cc6982a4776c13c996ccfb52ef941b239a19ad3d95199ee",
+    "game/app.js": "7f91c2f4a666c01023ccdca75ca49b41b51d77e2096ee9f0a8334df97b0a5fbc",
+    "game/audio.js": "2adc44a023fa14bb4d033c50e0452a1da325eb8437b17903a55a3d08f3c061a2",
+    "game/bots.js": "5f18ba3b4936436fa500e359a4cb600f2f67ad96263750285b8d307355d539bd",
+    "game/constants.js": "14422b216edeebfcffe936adf5c78cd09b7228b3469bff58ddf7f716926ba685",
+    "game/icon.svg": "957d80fdc07c2d24981be13c353054f69b0cee3c52413dfe6e803f93f79acd7e",
+    "game/index.html": "eb23456374294d158b57667c0cbc9cddfd95e52e11090cad64b40c4b81038d5e",
+    "game/map.js": "7be03bee586c06cc2ae8349d93ad0bec74726dfab2deae1d12527bcd274ec593",
+    "game/sim.js": "fe7321eb935647b47f7da702540c5421dccb21422a20d1e46cb24ea1741b5943",
+    "game/style.css": "f92c141f8627b12da2a73643696a760aabd1d61517ee18299e22aadf369c326c",
+    "game/ui.js": "56c7b8f3cf858aac732bc5a3eb80a002b49eabcefc159e8ca775867631297cc6",
+    "game/vendor/three/LICENSE": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc",
+    "game/vendor/three/three.core.min.js": "613e370f76638fdef83926642bf256dc9615684922de1ce1f63a8583e5d78578",
+    "game/vendor/three/three.module.min.js": "ef510bae547ab3789d6ed543333a8bf42510a8c70743b766c4e19039b976c26b",
+    "game/view.js": "1102ddd72eda12834c54f7bcd66aa205478d5fb4d571780bbb84dfc5be0d8f9a",
+    "screenshots/01-live.jpg": "b243284be13c58dd3687129859478de5359cf8f4ba3a1f6977a049fcb0ca9758",
+    "screenshots/02-relay.jpg": "b47daa6212694a47be5b9fabcd347280727d6e17ec16ea42fa6cc4e3cbf7cd47",
+    "screenshots/03-supply.jpg": "d128dea6b97b950c9fff78edd59c8af0e974678ca673bb3aad329ced355dd59a",
+    "screenshots/04-briefing.jpg": "f6ff4b6503e1e9ce67c3ca12992d91c47ba073d1e278c64f0b8ac928d03ff347"
+  },
+  "dossierBytes": 591440,
+  "dossierTextBytes": 83837,
+  "sourceTruncated": false,
+  "browser": {
+    "pointerLock": true,
+    "plant": {
+      "state": "planted",
+      "carrier": null,
+      "x": -17,
+      "z": -15,
+      "timer": 34.550000000000026,
+      "progress": 0,
+      "site": "A",
+      "user": null
+    },
+    "roundOutcome": {
+      "attack": 0,
+      "defend": 1
+    },
+    "roundTwo": {
+      "round": 2,
+      "money": 500,
+      "weapon": "heavy",
+      "armor": 0
+    },
+    "mute": "M · SOUND OFF",
+    "scoreboardRows": 6,
+    "finalPlayer": {
+      "hp": 100,
+      "weapon": "heavy",
+      "frags": 0
+    },
+    "grenadeBlasts": 1,
+    "nonLocalResources": []
+  }
+}
